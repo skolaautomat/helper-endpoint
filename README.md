@@ -1,2 +1,1 @@
 # helper-endpoint
-Helper Endpoint
