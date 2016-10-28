@@ -7,7 +7,9 @@ function onOpen() {
 }
 
 function insertLinkWithTitle() {
-  var cursor = DocumentApp.getActiveDocument().getCursor();
+  var doc = DocumentApp.getActiveDocument();
+  var cursor = doc.getCursor();  
+
   if (cursor) {
     var ui = DocumentApp.getUi();
     var response = ui.prompt('Automatic Title', 'Link', ui.ButtonSet.OK_CANCEL);  
@@ -30,6 +32,8 @@ function insertLinkWithTitle() {
         
         if(element) {
           element.setLinkUrl(url);
+          var position = doc.newPosition(element, title.length);
+          doc.setCursor(position); // go to the end of the text          
         } else {
           DocumentApp.getUi().alert('Cannot insert text at this cursor location.');        
         }
