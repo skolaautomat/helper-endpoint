@@ -18,7 +18,8 @@ function getTitleFromURL(url, cb) {
 
     rp(options)
         .then(function ($) {
-            var title = $('html > head > title').text()
+            var title = $('head > title').text();
+
             cb(false, title); 
         })
         .catch(function (err) {
